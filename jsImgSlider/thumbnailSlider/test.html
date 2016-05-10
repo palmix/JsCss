@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Demo 1: Menucool jQuery Slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="1/thumbs2.css" rel="stylesheet" />
+    <link href="1/thumbnail-slider.css" rel="stylesheet" type="text/css" />
+    <script src="1/thumbnail-slider.js" type="text/javascript"></script>
+    <style>
+        body {font: normal 0.9em Arial;color: #222;}
+        header {display:block; font-size:1.2em; margin-bottom:100px;}
+        header a, header span {
+            display: inline-block;
+            padding: 4px 8px;
+            margin-right: 10px;
+            border: 2px solid #000;
+            background: #DDD;
+            color: #000;
+            text-decoration: none;
+            text-align: center;
+            height: 20px;
+        }
+        header span {background:white;}
+        a {color: #1155CC;}
+    </style>
+</head>
+<body>
+<div id="slider"></div>
+  <script>
+
+function DaleelBlogger(data) {
+  var feed = data.feed;
+     var imgs = "/w120-h60-p-nu/";
+      var imgb = 1600;
+  var entries = feed.entry || [];
+  var html = ['<div id="thumbnail-slider"><div class="inner"><ul>'];
+  for (var i = 0; i < entries.length; i++) {
+     var thumbUrls = "";
+     var thumbUrlb = "";
+      var title = "";
+    var entry = entries[i];
+      title = entry.title.$t;
+thumbUrl = entry.media$thumbnail.url;
+thumbUrls = thumbUrl.replace("/s72-c/",imgs);
+thumbUrlb = thumbUrl.replace("/s72-c/","/s"+imgb+"/");
+html.push('<li><a href="/" title=""><span class="thumb" style="background-image:url('+thumbUrls+')"> This slide</span></a></li>');
+  }
+html.push('</ul></div></div>');
+  document.getElementById('slider').innerHTML = html.join('');
+} 
+</script>
+
+
+<script 
+    type="text/javascript" 
+    src="http://appmuslims.blogspot.com/feeds/posts/default?alt=json&callback=DaleelBlogger">
+</script>
+</body>
+</html>
